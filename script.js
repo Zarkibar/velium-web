@@ -56,8 +56,6 @@ socket.on("user_left", username => {
     addMessage("SYSTEM", `${username} has left us`, true);
 });
 
-socket.emit("set_username", "Guest");
-
 function handleSubmit(){
     const input = document.getElementById('message-input');
     const message = input.value.trim();
