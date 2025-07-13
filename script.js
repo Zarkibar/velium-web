@@ -1,3 +1,5 @@
+const socket = io("https://f4c777e8-51d7-4b7f-96b8-92f38f8ae228-00-37flna8c9t0hi.picard.replit.dev:3000/")
+
 // Function to add a new message to the chat
 function addMessage(username, message, isSystem = false) {
     const chatDisplay = document.getElementById('chat-display');
@@ -16,7 +18,7 @@ function addMessage(username, message, isSystem = false) {
 }
 
 // Function to handle input submission
-function handleSubmit() {
+function handleSubmitOld() {
     const input = document.getElementById('message-input');
     const message = input.value.trim();
     
@@ -39,6 +41,20 @@ function handleSubmit() {
             const randomResponse = responses[Math.floor(Math.random() * responses.length)];
             addMessage("SYSTEM", randomResponse, true);
         }, 1000);
+    }
+}
+
+socket.on('message', text => {
+    addMessage("USER", text, false);
+});
+
+function handleSubmit(){
+    const input = document.getElementById('message-input');
+    const message = input.value.trim();
+    
+    if (message) {
+        socket.emit('message', message);
+        input.value = '';
     }
 }
 
