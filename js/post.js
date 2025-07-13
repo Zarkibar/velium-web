@@ -1,3 +1,5 @@
+const socket = SocketManager.connect();
+
 const postBtn = document.getElementById("post-btn");
 const postContent = document.getElementById("post-content");
 const postFeed = document.getElementById("post-feed");
