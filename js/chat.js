@@ -17,33 +17,6 @@ function addMessage(username, message, isSystem = false) {
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
 
-// Function to handle input submission
-function handleSubmitOld() {
-    const input = document.getElementById('message-input');
-    const message = input.value.trim();
-    
-    if (message) {
-        // Add user message
-        addMessage("USER", message);
-        
-        // Clear input
-        input.value = '';
-        
-        // Simulate system response after a delay
-        setTimeout(() => {
-            const responses = [
-                "Message received",
-                "Roger that",
-                "Affirmative",
-                "Copy that",
-                "10-4"
-            ];
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            addMessage("SYSTEM", randomResponse, true);
-        }, 1000);
-    }
-}
-
 socket.on("user_joined", username => {
     addMessage("SYSTEM", `${username} has joined the chat`, true);
 });
@@ -83,15 +56,6 @@ const now = new Date();
 const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 document.getElementById('current-date').textContent = formattedDate;
 
-// Add initial messages to create retro feel
-setTimeout(() => {
-    addMessage("SYSTEM", "Initializing chat protocol...", true);
-}, 500);
-
-setTimeout(() => {
-    addMessage("SYSTEM", "Establishing secure connection...", true);
-}, 1000);
-
 setTimeout(() => {
     addMessage("SYSTEM", "Connection established. Ready to chat!", true);
-}, 1500);
+}, 500);

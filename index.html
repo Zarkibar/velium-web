@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velium</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Redirect to chat by default
+        window.location.href = 'chat/chat.html';
+    </script>
 </head>
 <body>
     <div class="header">
@@ -14,27 +16,8 @@
         <p>An end-to-end encrypted chat applicaton</p>
     </div>
     
-    <div class="chat-container" id="chat-display">
-        <div class="message system-message">SYSTEM: Welcome to Velium v0.0.2</div>
-        <div class="message system-message">SYSTEM: Type your message and press ENTER</div>
-        <div class="message system-message">SYSTEM: Connected to Velium server</div>
-    </div>
-    
-    <div class="input-container">
-        <input 
-            type="text" 
-            id="message-input" 
-            placeholder="Type your message here..." 
-            autocomplete="off"
-        >
-        <div class="cursor blink"></div>
-        <button class="send-message-btn" id="send-message-btn">Send</button>
-    </div>
-    
-    <div class="status-bar">
-        <div>STATUS: ONLINE</div>
-        <div>USERS: 1</div>
-        <div>DATE: <span id="current-date"></span></div>
+    <div class="chat-container">
+        <p>Loading Velium...</p>
     </div>
 </body>
 </html>
