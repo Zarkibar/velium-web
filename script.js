@@ -44,9 +44,19 @@ function handleSubmitOld() {
     }
 }
 
-socket.on('message', text => {
-    addMessage("USER", text, false);
+socket.on("user_joined", username => {
+    addMessage("SYSTEM", `${username} has joined the chat`, true);
 });
+
+socket.on('message', data => {
+    addMessage(data.username, data.text, false);
+});
+
+socket.on("user_left", username => {
+    addMessage("SYSTEM", `${username} has left us`, true);
+});
+
+socket.emit("set_username", "Guest");
 
 function handleSubmit(){
     const input = document.getElementById('message-input');
