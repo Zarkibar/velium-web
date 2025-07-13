@@ -1,7 +1,9 @@
 const socket = SocketManager.connect();
 
+const username = veliumStorage.getUsername()
+
 // Function to add a new message to the chat
-function addMessage(username, message, isSystem = false) {
+function addMessage(message, isSystem = false) {
     const chatDisplay = document.getElementById('chat-display');
     const messageElement = document.createElement('div');
     
@@ -10,7 +12,7 @@ function addMessage(username, message, isSystem = false) {
         messageElement.classList.add('system-message');
     }
     
-    messageElement.textContent = `${username}: ${message}`;
+    messageElement.textContent = message;
     chatDisplay.appendChild(messageElement);
     
     // Scroll to the bottom
@@ -18,16 +20,16 @@ function addMessage(username, message, isSystem = false) {
 }
 
 socket.on("user_joined", username => {
-    addMessage("SYSTEM", `${username} has joined the chat`, true);
+    addMessage(`${username} has joined the chat`, true);
 });
 
-socket.on('message', data => {
-    console.log(`${data.username}: ${data.text}`)
-    addMessage(`${data.username}`, `${data.text}`, false);
+socket.on('message', msg => {
+    console.log(msg)
+    addMessage(msg, false);
 });
 
 socket.on("user_left", username => {
-    addMessage("SYSTEM", `${username} has left us`, true);
+    addMessage(`${username} has left the chat`, true);
 });
 
 function handleSubmit(){
@@ -35,7 +37,7 @@ function handleSubmit(){
     const message = input.value.trim();
     
     if (message) {
-        socket.emit('message', message);
+        socket.emit('message', `${username}: ${message}`);
         input.value = '';
     }
 }
@@ -57,5 +59,5 @@ const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}
 document.getElementById('current-date').textContent = formattedDate;
 
 setTimeout(() => {
-    addMessage("SYSTEM", "Connection established. Ready to chat!", true);
+    addMessage("SYSTEM: Connection established. Ready to chat!", true);
 }, 500);

@@ -5,6 +5,8 @@ const postContent = document.getElementById("post-content");
 const postFeed = document.getElementById("post-feed");
 const postError = document.getElementById("post-error");
 
+const username = veliumStorage.getUsername()
+
 postBtn.addEventListener("click", () => {
     const content = postContent.value.trim();
 
@@ -23,7 +25,7 @@ postBtn.addEventListener("click", () => {
 
     postDiv.innerHTML = `
         <div class="post-header">
-            <div class="post-username">YOU</div>
+            <div class="post-username">${username}</div>
             <div class="post-time">${formattedTime}</div>
         </div>
         <div class="post-content">${escapeHTML(content)}</div>
