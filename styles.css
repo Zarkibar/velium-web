@@ -41,6 +41,12 @@ body {
     animation: fadeIn 0.3s;
 }
 
+.send-message-btn {
+    margin: 5px 0;
+    color: rgb(8, 141, 8);
+    background: #0f0;
+}
+
 .input-container {
     display: flex;
     border: 2px solid #0f0;
