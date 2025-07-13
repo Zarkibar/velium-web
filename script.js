@@ -49,7 +49,8 @@ socket.on("user_joined", username => {
 });
 
 socket.on('message', data => {
-    addMessage(data.username, data.text, false);
+    console.log(`${data.username}: ${data.text}`)
+    // addMessage(data.username, data.text, false);
 });
 
 socket.on("user_left", username => {
