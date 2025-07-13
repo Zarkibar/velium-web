@@ -50,7 +50,7 @@ socket.on("user_joined", username => {
 
 socket.on('message', data => {
     console.log(`${data.username}: ${data.text}`)
-    // addMessage(data.username, data.text, false);
+    addMessage(`${data.username}`, `${data.text}`, false);
 });
 
 socket.on("user_left", username => {
