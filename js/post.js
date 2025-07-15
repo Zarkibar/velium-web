@@ -37,6 +37,8 @@ postBtn.addEventListener("click", () => {
     postContent.value = ""; // Clear textarea
 });
 
+socket.emit("register_page", {username, page: "posts"});
+
 // Prevent HTML injection
 function escapeHTML(str) {
     return str

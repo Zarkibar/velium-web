@@ -1,16 +1,14 @@
 window.veliumStorage = {
   getUsername() {
-    const name = localStorage.getItem('retroChatUsername')
-    if (name == null){
-        return this.generateRandomUsername();
-    }
-
-    return name
+    return localStorage.getItem('veliumUsername')
   },
   
-  setUsername(username) {
-    localStorage.setItem('retroChatUsername', username);
-    this.dispatchUsernameChange();
+  setRandomUsername() {
+    localStorage.setItem('veliumUsername', this.generateRandomUsername());
+  },
+
+  setUsername(username){
+    localStorage.setItem('veliumUsername', username);    
   },
   
   generateRandomUsername() {
@@ -86,16 +84,4 @@ window.veliumStorage = {
     const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
     return `${prefix}${suffix}${Math.floor(Math.random() * 100)}`;
   },
-  
-  // Optional: Notify other files when username changes
-  usernameChangeCallbacks: [],
-  
-  onUsernameChange(callback) {
-    this.usernameChangeCallbacks.push(callback);
-  },
-  
-  dispatchUsernameChange() {
-    const username = this.getUsername();
-    this.usernameChangeCallbacks.forEach(cb => cb(username));
-  }
 };

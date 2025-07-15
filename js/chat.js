@@ -19,17 +19,27 @@ function addMessage(message, isSystem = false) {
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
 
-socket.on("user_joined", username => {
+socket.emit("register_page", {username, page: "chat"});
+
+socket.on("user_joined_in_chat", username => {
     addMessage(`${username} has joined the chat`, true);
+});
+
+socket.on("user_left_in_chat", username => {
+    addMessage(`${username} has left the chat`, true);
+});
+
+socket.on("user_joined_in_posts", username => {
+    addMessage(`${username} is visiting posts`, true);
+});
+
+socket.on("user_left_in_posts", username => {
+    addMessage(`${username} has left posts`, true);
 });
 
 socket.on('message', msg => {
     console.log(msg)
     addMessage(msg, false);
-});
-
-socket.on("user_left", username => {
-    addMessage(`${username} has left the chat`, true);
 });
 
 function handleSubmit(){
