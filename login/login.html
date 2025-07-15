@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velium</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .crt-screen {
+        position: relative;
+        background-color: #000;
+        color: #0f0;
+        font-family: 'Courier New', monospace;
+        padding: 20px;
+        border: 3px double #0f0;
+        box-shadow: 0 0 10px #0f0;
+        overflow: hidden;
+    }
+
+    .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            rgba(0, 255, 0, 0.06) 50%,
+            transparent 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+    }
+
+    /* Login Container */
+    .login-container {
+        max-width: 400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Tabs */
+    .tab-container {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #0f0;
+    }
+
+    .tab-btn {
+        background: none;
+        border: none;
+        color: #0f0;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        font-size: 16px;
+    }
+
+    .tab-btn.active {
+        background: #0f0;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    /* Forms */
+    .pixel-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pixel-input {
+        background: #111;
+        border: 1px solid #0f0;
+        color: #0f0;
+        padding: 8px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .pixel-input:focus {
+        outline: none;
+        border-color: #ff0;
+    }
+
+    .pixel-btn {
+        background: #0f0;
+        color: #000;
+        border: none;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .pixel-btn:hover {
+        background: #ff0;
+    }
+
+    .status-message {
+        margin-top: 20px;
+        min-height: 20px;
+        color: #ff0;
+    }
+    </style>
+</head>
+<body>
+    <div class="crt-screen">
+        <div class="scanlines"></div>
+        <div class="login-container">
+            <h1 class="pixel-font">Velium</h1>
+            <div class="tab-container">
+                <button id="guestBtn" class="tab-btn active" onclick="openGuestTab()">GUEST</button>
+                <button id="loginBtn" class="tab-btn" onclick="openLoginTab()">LOGIN</button>
+                <button id="registerBtn" class="tab-btn" onclick="openRegisterTab()">REGISTER</button>
+            </div>
+
+            <!-- Guest Form -->
+            <div id="guest" class="tab-content active">
+                <form id="guest-form" class="pixel-form" onsubmit="connectGuest(event)">
+                    <div class="form-group">
+                        <label for="guest-username">CHOOSE USERNAME:</label>
+                        <input type="text" id="guest-username" class="pixel-input" required>
+                    </div>
+                    <button type="submit" class="pixel-btn">CONNECT</button>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login" class="tab-content">
+                <form id="login-form" class="pixel-form">
+                    <div class="form-group">
+                        <label for="login-username">USERNAME:</label>
+                        <input type="text" id="login-username" class="pixel-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">PASSWORD:</label>
+                        <input type="password" id="login-password" class="pixel-input" required>
+                    </div>
+                    <button type="submit" class="pixel-btn">CONNECT</button>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register" class="tab-content">
+                <form id="register-form" class="pixel-form">
+                    <div class="form-group">
+                        <label for="reg-username">CHOOSE USERNAME:</label>
+                        <input type="text" id="reg-username" class="pixel-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">CHOOSE PASSWORD:</label>
+                        <input type="password" id="reg-password" class="pixel-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm">CONFIRM PASSWORD:</label>
+                        <input type="password" id="reg-confirm" class="pixel-input" required>
+                    </div>
+                    <button type="submit" class="pixel-btn">CREATE ACCOUNT</button>
+                </form>
+            </div>
+
+            <div id="status-message" class="status-message"></div>
+        </div>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
