@@ -7,6 +7,16 @@ const postError = document.getElementById("post-error");
 
 const username = veliumStorage.getUsername();
 
+function requestDeletePost(id){
+    socket.emit("deletePost", id);
+    deletePost(id);
+}
+
+function deletePost(id){
+    post = document.getElementById(`post-id${id}`);
+    post.remove();
+}
+
 function clearPosts(){
     const posts = document.getElementsByClassName("post");
 
@@ -15,14 +25,19 @@ function clearPosts(){
     }
 }
 
-function loadPost(author, content, time){
+function loadPost(post_id, author, content, time){
     const postDiv = document.createElement("div");
     postDiv.className = "post";
+    postDiv.id = `post-id${post_id}`;
+
+    deleteBtnHTML = `<button class="post-delete-btn" onclick="requestDeletePost('${post_id}')">Delete</button>`;
+    if (username !== author) deleteBtnHTML = "";
 
     postDiv.innerHTML = `
         <div class="post-header">
             <div class="post-username">${author}</div>
             <div class="post-time">${time}</div>
+            ${deleteBtnHTML}
         </div>
         <div class="post-content">${escapeHTML(content)}</div>
     `;
@@ -53,7 +68,7 @@ socket.emit("register_page", {username, page: "posts"});
 socket.on("loadPosts", (posts) => {
     clearPosts();
     posts.forEach(post => {
-        loadPost(post.username, post.content, post.time);
+        loadPost(post.id, post.username, post.content, post.time);
     });
 });
 
