@@ -320,9 +320,18 @@ body {
 }
 
 .send-message-btn {
-    margin: 5px 0;
-    color: rgb(8, 141, 8);
-    background: #0f0;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.send-message-btn:hover {
+    background: var(--primary);
+    color: var(--background);
 }
 
 .input-container {
