@@ -1,0 +1,84 @@
+/* Login Container */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tabs */
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0f0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: #0f0;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    background: #0f0;
+    color: #000;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Forms */
+.pixel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.pixel-input {
+    background: #111;
+    border: 1px solid #0f0;
+    color: #0f0;
+    padding: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.pixel-input:focus {
+    outline: none;
+    border-color: #ff0;
+}
+
+.pixel-btn {
+    background: #0f0;
+    color: #000;
+    border: none;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.pixel-btn:hover {
+    background: #ff0;
+}
+
+.status-message {
+    margin-top: 20px;
+    min-height: 20px;
+    color: #ff0;
+}
