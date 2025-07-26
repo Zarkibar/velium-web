@@ -1,5 +1,6 @@
 :root {
     --primary: #0f0;
+    --primary-darker: rgb(0, 185, 0);
     --secondary: #ff0;
     --background: #000;
     --panel: #111;
@@ -257,6 +258,27 @@ body {
 .post-content {
     line-height: 1.5;
     white-space: pre-wrap; /* This preserves spaces and newlines */
+}
+
+.post-option {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+}
+
+.post-options-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    padding: 0 8px;
+    transition: all 0.2s;
+}
+
+.post-options-btn:hover {
+    color: var(--primary-darker);
+    transform: scale(1.1);
 }
 
 .delete-btn {
