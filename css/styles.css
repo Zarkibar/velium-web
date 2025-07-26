@@ -260,12 +260,6 @@ body {
     white-space: pre-wrap; /* This preserves spaces and newlines */
 }
 
-.post-option {
-    position: relative;
-    display: inline-block;
-    margin: auto;
-}
-
 .post-options-btn {
     background: none;
     border: none;
@@ -279,6 +273,47 @@ body {
 .post-options-btn:hover {
     color: var(--primary-darker);
     transform: scale(1.1);
+}
+
+.post-options-menu {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    width: 120px;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-options-menu.show {
+    display: flex;
+}
+
+.post-option {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.post-option:hover {
+    background-color: #f5f5f5;
+}
+
+.post-option.danger {
+    color: #e74c3c;
+}
+
+.post-option.danger:hover {
+    color: #f5f5f5;
+    background-color: #e74c3c;
 }
 
 .delete-btn {
