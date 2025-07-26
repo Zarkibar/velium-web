@@ -17,6 +17,39 @@ function deletePost(id){
     post.remove();
 }
 
+function editPost(id) {
+    postId = `post-id${id}`;
+    // console.log('Editing post:', postId);
+    // const post = document.getElementById(postId);
+    // const content = post.querySelector('.post-content').textContent;
+    
+    // // Replace content with editable textarea
+    // post.querySelector('.post-content').innerHTML = `
+    //     <textarea class="edit-textarea">${content}</textarea>
+    //     <div class="edit-buttons">
+    //         <button class="save-edit" onclick="saveEdit('${postId}')">Save</button>
+    //         <button class="cancel-edit" onclick="cancelEdit('${postId}')">Cancel</button>
+    //     </div>
+    // `;
+}
+// function saveEdit(postId) {
+//     const post = document.getElementById(postId);
+//     const newContent = post.querySelector('.edit-textarea').value;
+//     post.querySelector('.post-content').textContent = newContent;
+// }
+
+// function cancelEdit(postId) {
+//     const post = document.getElementById(postId);
+//     // In a real app, you would restore the original content from your data store
+//     post.querySelector('.post-content').textContent = "Welcome to Velium! If you're seeing this post, check your internet connection.";
+// }
+
+function reportPost(id) {
+    postId = `post-id${id}`;
+    console.log('Reporting post:', postId);
+    alert(`Post ${postId} has been reported.`);
+}
+
 function clearPosts(){
     const posts = document.getElementsByClassName("post");
 
@@ -30,14 +63,25 @@ function loadPost(post_id, author, content, time){
     postDiv.className = "post";
     postDiv.id = `post-id${post_id}`;
 
-    deleteBtnHTML = `<button class="post-delete-btn" onclick="requestDeletePost('${post_id}')">Delete</button>`;
-    if (username !== author) deleteBtnHTML = "";
+    editBtnHTML = `<button class="post-option" onclick="editPost('${post_id}')">Edit</button>`;
+    deleteBtnHTML = `<button class="post-option danger" onclick="requestDeletePost('${post_id}')">Delete</button>`;
+    if (username !== author) {
+        deleteBtnHTML = "";
+        editBtnHTML = "";
+    }
 
     postDiv.innerHTML = `
         <div class="post-header">
             <div class="post-username">${author}</div>
             <div class="post-time">${time}</div>
-            ${deleteBtnHTML}
+            <div class="post-options">
+                <button class="post-options-btn">⋮</button>
+                <div class="post-options-menu">
+                    ${editBtnHTML}
+                    ${deleteBtnHTML}
+                    <button class="post-option danger" onclick="reportPost('${post_id}')">Report</button>
+                </div>
+            </div>
         </div>
         <div class="post-content">${escapeHTML(content)}</div>
     `;
@@ -81,3 +125,28 @@ function escapeHTML(str) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
+
+// Toggle options menu when clicking the options button
+document.addEventListener('click', function(event) {
+    // Close all other open menus first
+    document.querySelectorAll('.post-options-menu.show').forEach(menu => {
+        if (!menu.contains(event.target) && !event.target.closest('.post-options-btn')) {
+            menu.classList.remove('show');
+        }
+    });
+    
+    // Toggle the clicked menu
+    if (event.target.classList.contains('post-options-btn')) {
+        const menu = event.target.nextElementSibling;
+        menu.classList.toggle('show');
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.post-options')) {
+        document.querySelectorAll('.post-options-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
+});

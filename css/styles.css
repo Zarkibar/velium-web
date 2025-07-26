@@ -316,6 +316,21 @@ body {
     background-color: #e74c3c;
 }
 
+.post-delete-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    float: right;
+}
+
+.post-delete-btn:hover {
+    background: var(--error);
+    color: var(--background);
+}
+
 .delete-btn {
     position: absolute;
     top: 5px;
@@ -408,19 +423,4 @@ body {
 
 #message-input:focus {
     outline: none;
-}
-
-.post-delete-btn {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--text);
-    padding: 8px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    float: right;
-}
-
-.post-delete-btn:hover {
-    background: var(--error);
-    color: var(--background);
 }
