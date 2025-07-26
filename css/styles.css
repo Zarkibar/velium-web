@@ -292,6 +292,7 @@ body {
 
 .post-options-menu.show {
     display: flex;
+    animation: fadeIn 0.3s;
 }
 
 .post-option {
