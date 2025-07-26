@@ -278,8 +278,9 @@ body {
 .post-options-menu {
     position: absolute;
     right: 0;
-    background-color: white;
-    border-radius: 8px;
+    background: var(--background);
+    border: 1px solid var(--primary);
+    /* border-radius: 8px; */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 8px 0;
     width: 120px;
@@ -300,35 +301,22 @@ body {
     text-align: left;
     cursor: pointer;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text);
+    /* font-weight: bold; */
 }
 
 .post-option:hover {
-    background-color: #f5f5f5;
+    background: var(--primary);
+    color: var(--panel);
 }
 
 .post-option.danger {
-    color: #e74c3c;
+    color: var(--error);
 }
 
 .post-option.danger:hover {
-    color: #f5f5f5;
-    background-color: #e74c3c;
-}
-
-.post-delete-btn {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--text);
-    padding: 8px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    float: right;
-}
-
-.post-delete-btn:hover {
     background: var(--error);
-    color: var(--background);
+    color: var(--panel);
 }
 
 .delete-btn {
