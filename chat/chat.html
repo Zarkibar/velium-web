@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="header">
+        <button class="convo-btn">Conversations</button>
         <h1>Velium v0.0.1</h1>
         <!-- <p>An end-to-end encrypted chat applicaton</p> -->
         <p>The chats aren't encrypted yet.</p>
@@ -18,20 +19,30 @@
             <a href="../post/post.html" class="nav-btn">POSTS</a>
         </div>
     </div>
-    
-    <div class="chat-container" id="chat-display">
-        <div class="message system-message">SYSTEM: Type your message and press ENTER</div>
-    </div>
-    
-    <div class="input-container">
-        <input 
-            type="text" 
-            id="message-input" 
-            placeholder="Type your message here..." 
-            autocomplete="off"
-        >
-        <div class="cursor blink"></div>
-        <button class="send-message-btn" id="send-message-btn">Send</button>
+
+    <div class="chat-window-container">
+        <div class="convo-list">
+            <div class="convo">Alice</div>
+            <div class="convo">Bob</div>
+            <div class="convo">Cynthia</div>
+        </div>
+
+        <div class="chat">
+            <div class="chat-container" id="chat-display">
+                <div class="message system-message">SYSTEM: Type your message and press ENTER</div>
+            </div>
+            
+            <div class="input-container">
+                <input 
+                    type="text" 
+                    id="message-input" 
+                    placeholder="Type your message here..." 
+                    autocomplete="off"
+                >
+                <div class="cursor blink"></div>
+                <button class="send-message-btn" id="send-message-btn">Send</button>
+            </div>
+        </div>
     </div>
     
     <div class="status-bar">
