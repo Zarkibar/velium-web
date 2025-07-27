@@ -70,6 +70,19 @@ document.getElementById('message-input').addEventListener('keydown', (e) => {
     }
 });
 
+document.getElementById('message-input').addEventListener('input', () => {
+    if (!isTyping) {
+        isTyping = true;
+        socket.emit('typing', username);
+    }
+    
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => {
+        isTyping = false;
+        socket.emit('stop_typing', username);
+    }, TYPING_DELAY);
+});
+
 document.getElementById("send-message-btn").onclick = () => {
     handleSubmit();
 }
