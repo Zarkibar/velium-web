@@ -58,6 +58,21 @@ body {
     background: var(--panel);
 }
 
+.convo-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.convo-btn:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
 .header {
     border-bottom: 3px double var(--primary);
     padding: 10px;
@@ -111,6 +126,18 @@ body {
 }
 
 /* Chat Page Styles */
+
+.chat {
+    flex-grow: 1;
+    border: 1px solid var(--primary);
+    background: var(--background);
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .chat-container {
     flex-grow: 1;
     border: 1px solid var(--primary);
