@@ -134,10 +134,6 @@ body {
 
 .chat-window-container {
     flex-grow: 1;
-    border: 1px solid var(--primary);
-    background: var(--background);
-    padding: 10px;
-    margin-bottom: 10px;
     overflow-y: auto;
     display: flex;
     flex-direction: row;
@@ -164,7 +160,7 @@ body {
 }
 
 .convo-list {
-    flex-grow: 0.5;
+    flex-grow: 0.25;
     border: 1px solid var(--primary);
     background: var(--background);
     padding: 10px;
