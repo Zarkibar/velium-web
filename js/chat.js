@@ -27,7 +27,6 @@ socket.on("user_joined_in_chat", username => {
 
 socket.on("user_left_in_chat", username => {
     addMessage(`${username} has left the chat`, true);
-    remove_conversation(username);
 });
 
 socket.on("user_joined_in_posts", username => {
@@ -40,6 +39,7 @@ socket.on("user_left_in_posts", username => {
 
 socket.on('get_all_username', (usernames) => {
     console.log(usernames);
+    remove_conversation(username);
     usernames.forEach((username) => {
         add_conversation(username);
     });
