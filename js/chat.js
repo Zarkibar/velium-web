@@ -104,6 +104,20 @@ document.getElementById('message-input').addEventListener('keydown', (e) => {
     }
 });
 
+let isTyping = false;
+let typingTimer = 0;
+let TYPING_DELAY = 1500;
+
+socket.on('typing', (username) => {
+    if (username != veliumStorage.getUsername())
+        document.getElementById('typing-indicator').style.opacity = 1.0
+});
+
+socket.on('stop_typing', (username) => {
+    if (username != veliumStorage.getUsername())
+        document.getElementById('typing-indicator').style.opacity = 0.0
+});
+
 document.getElementById('message-input').addEventListener('input', () => {
     if (!isTyping) {
         isTyping = true;

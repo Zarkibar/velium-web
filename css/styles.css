@@ -195,6 +195,29 @@ body {
     color: var(--background);
 }
 
+.typing-indicator {
+    background-color: var(--background);
+    border: 2px solid var(--primary);
+    color: var(--text);
+    padding: 5px 10px;
+    font-size: 0.85em;
+    border-radius: 5px;
+    position: absolute; /* KEY: Take it out of normal flow */
+    bottom: 15%;          /* KEY: Pin to the bottom of the parent */
+    left: 50%;          /* KEY: Start from the middle */
+    transform: translateX(-50%); /* KEY: Center it horizontally */
+    white-space: nowrap; /* Prevent text from wrapping */
+    z-index: 10;        /* KEY: Ensure it's on top of chat messages */
+
+    opacity: 0; /* use opacity for a fade effect */
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+
+.typing-indicator.active {
+    opacity: 1;
+}
+
 .message {
     margin: 5px 0;
     padding: 8px;
