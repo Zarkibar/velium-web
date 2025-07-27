@@ -169,6 +169,27 @@ body {
     flex-direction: column;
 }
 
+.convo {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.convo:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.convo.active {
+    background: var(--primary);
+    color: var(--background);
+}
+
 .message {
     margin: 5px 0;
     padding: 8px;
