@@ -27,6 +27,7 @@ socket.on("user_joined_in_chat", username => {
 
 socket.on("user_left_in_chat", username => {
     addMessage(`${username} has left the chat`, true);
+    remove_conversation(username);
 });
 
 socket.on("user_joined_in_posts", username => {
@@ -35,6 +36,12 @@ socket.on("user_joined_in_posts", username => {
 
 socket.on("user_left_in_posts", username => {
     addMessage(`${username} has left posts`, true);
+});
+
+socket.on('get_all_username', (usernames) => {
+    usernames.forEach((username) => {
+        add_conversation(username);
+    });
 });
 
 socket.on('message', msg => {
@@ -52,6 +59,32 @@ socket.on('user_count', users => {
     document.getElementById('user-count').textContent = users;
 });
 
+function add_conversation(username) {
+    const convo_list = document.getElementById('convo-list');
+    const new_convo = document.createElement('button');
+
+    new_convo.classList.add('convo');
+    new_convo.textContent = username;
+
+    convo_list.appendChild(new_convo);
+}
+
+function remove_conversation(username) {
+    const convo_list = document.getElementById('convo-list');
+    const conversations = convo_list.querySelectorAll('.convo');
+    
+    conversations.forEach(convo => {
+        if (convo.textContent === username) {
+            // Optional: Add fade-out animation before removal
+            convo.style.opacity = '0';
+            convo.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                convo.remove();
+            }, 300); // Match timeout duration to CSS transition
+        }
+    });
+}
 
 function handleSubmit(){
     const input = document.getElementById('message-input');
