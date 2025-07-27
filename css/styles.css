@@ -165,8 +165,12 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     overflow-y: auto;
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.convo-list.active {
+    display: flex;
 }
 
 .convo {
