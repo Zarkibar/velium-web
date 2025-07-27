@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="header">
-        <button class="convo-btn">Conversations</button>
+        <button class="convo-btn active" onclick="toggle_convo(this)">Conversations</button>
         <h1>Velium v0.0.1</h1>
         <!-- <p>An end-to-end encrypted chat applicaton</p> -->
         <p>The chats aren't encrypted yet.</p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="chat-window-container">
-        <div class="convo-list active">
+        <div class="convo-list active" id="convo-list">
             <button class="convo active">Velium Universal</button>
             <button class="convo">Alice</button>
             <button class="convo">Bob</button>

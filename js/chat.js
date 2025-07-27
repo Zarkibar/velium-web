@@ -92,6 +92,25 @@ const now = new Date();
 const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 document.getElementById('current-date').textContent = formattedDate;
 
+function toggle_convo(btn){
+    if (btn.classList.contains('active')){
+        btn.classList.remove('active');
+        document.getElementById('convo-list').classList.remove('active');
+    } else {
+        btn.classList.add("active");
+        document.getElementById('convo-list').classList.add('active');
+    }
+}
+
+// Close menu when clicking outside
+// document.addEventListener('click', function(event) {
+//     if (event.target.closest('.chat-container')) {
+//         document.querySelectorAll('.convo-list').forEach(menu => {
+//             menu.classList.remove('active');
+//         });
+//     }
+// });
+
 setTimeout(() => {
     addMessage("SYSTEM: Connection established. Ready to chat!", true);
 }, 500);
