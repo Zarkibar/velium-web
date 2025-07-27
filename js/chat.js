@@ -48,6 +48,11 @@ socket.on('loadChats', chats => {
     });
 })
 
+socket.on('user_count', users => {
+    document.getElementById('user-count').textContent = users;
+});
+
+
 function handleSubmit(){
     const input = document.getElementById('message-input');
     const message = input.value.trim();
