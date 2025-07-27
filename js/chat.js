@@ -39,6 +39,7 @@ socket.on("user_left_in_posts", username => {
 });
 
 socket.on('get_all_username', (usernames) => {
+    console.log(usernames);
     usernames.forEach((username) => {
         add_conversation(username);
     });
