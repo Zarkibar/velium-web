@@ -42,6 +42,12 @@ socket.on('message', msg => {
     addMessage(msg, false);
 });
 
+socket.on('loadChats', chats => {
+    chats.forEach((chat) => {
+        addMessage(chat.message, false);
+    });
+})
+
 function handleSubmit(){
     const input = document.getElementById('message-input');
     const message = input.value.trim();
