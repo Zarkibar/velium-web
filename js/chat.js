@@ -3,14 +3,33 @@ const socket = SocketManager.connect();
 const username = veliumStorage.getUsername()
 
 // Function to add a new message to the chat
-function addMessage(message, isSystem = false) {
+function addMessage(username, message, self=false) {
+    const chatDisplay = document.getElementById('chat-display');
+    const messageElement = document.createElement('div');
+    let sender = 'other';
+    if (self) sender = 'me';
+    
+    messageElement.classList.add('message');
+    messageElement.classList.add(sender);
+    
+    messageElement.innerHTML = `
+        <div class="username">${username}</div>
+        <div class="message-content ${sender}">${message}</div>
+    `;
+
+    chatDisplay.appendChild(messageElement);
+    
+    // Scroll to the bottom
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+function addSystemMessage(message){
     const chatDisplay = document.getElementById('chat-display');
     const messageElement = document.createElement('div');
     
     messageElement.classList.add('message');
-    if (isSystem) {
-        messageElement.classList.add('system-message');
-    }
+    messageElement.classList.add('message-content');
+    messageElement.classList.add('system-message');
     
     messageElement.textContent = message;
     chatDisplay.appendChild(messageElement);
@@ -22,19 +41,19 @@ function addMessage(message, isSystem = false) {
 socket.emit("register_page", {username, page: "chat"});
 
 socket.on("user_joined_in_chat", username => {
-    addMessage(`${username} has joined the chat`, true);
+    addSystemMessage(`${username} has joined the chat`);
 });
 
 socket.on("user_left_in_chat", username => {
-    addMessage(`${username} has left the chat`, true);
+    addSystemMessage(`${username} has left the chat`);
 });
 
 socket.on("user_joined_in_posts", username => {
-    addMessage(`${username} is visiting posts`, true);
+    addSystemMessage(`${username} is visiting posts`);
 });
 
 socket.on("user_left_in_posts", username => {
-    addMessage(`${username} has left posts`, true);
+    addSystemMessage(`${username} has left posts`);
 });
 
 socket.on('get_all_username', (usernames) => {
@@ -45,14 +64,17 @@ socket.on('get_all_username', (usernames) => {
     });
 });
 
-socket.on('message', msg => {
-    console.log(msg)
-    addMessage(msg, false);
+socket.on('message', ({username, message}) => {
+    console.log(`${username}: ${message}`);
+    if (username == this.username)
+        addMessage(username, message, false);
+    else
+        addMessage(username, message, true);
 });
 
 socket.on('loadChats', chats => {
     chats.forEach((chat) => {
-        addMessage(chat.message, false);
+        // addMessage(chat.message, false);
     });
 })
 
@@ -92,7 +114,7 @@ function handleSubmit(){
     const message = input.value.trim();
     
     if (message) {
-        socket.emit('message', `${username}: ${message}`);
+        socket.emit('message', {username, message});
         input.value = '';
     }
 }
@@ -160,5 +182,5 @@ function toggle_convo(btn){
 // });
 
 setTimeout(() => {
-    addMessage("SYSTEM: Connection established. Ready to chat!", true);
+    addSystemMessage("Connection established. Ready to chat!");
 }, 500);
