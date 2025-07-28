@@ -66,10 +66,10 @@ socket.on('get_all_username', (usernames) => {
 
 socket.on('message', ({username, message}) => {
     console.log(`${username}: ${message}`);
-    if (username == this.username)
-        addMessage(username, message, false);
-    else
+    if (username == veliumStorage.getUsername())
         addMessage(username, message, true);
+    else
+        addMessage(username, message, false);
 });
 
 socket.on('loadChats', chats => {
