@@ -2,9 +2,20 @@
     --primary: #F9F3EF;
     --secondary: #D2C1B6;
     --background: #1B3C53;
-    --panel: #456882;
-    --text: #c7c7cc;
+    --panel: #2f4e66;
+    --text: #d2d2e2;
     --error: tomato;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 * {
@@ -25,7 +36,7 @@ body {
 }
 
 .header {
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -39,6 +50,113 @@ body {
     font-size: 1.8rem;
     text-shadow: 0 0 5px var(--primary);
     padding: 5px 5px;
+    margin: 1px 10px;
+}
+
+.header p {
+    flex: 1;
+}
+
+.convo-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.convo-btn:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.convo-btn.active {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 1px;
+}
+
+.nav-btn {
+    background: var(--background);
+    color: var(--text);
+    padding: 10px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.nav-btn.active {
+    background: #c2c1c1;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.nav-btn:hover {
+    background: #c2c1c1;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.chat-window-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.convo-list {
+    flex-grow: 0.25;
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+}
+
+.convo-list.active {
+    display: flex;
+}
+
+.convo {
+    background: transparent;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.convo:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.convo.active {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.chat {
+    flex-grow: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-container {
@@ -50,4 +168,114 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px;
+    animation: fadeIn 0.3s;
+    background-color: #152f42;
+    border-radius: 20px;
+    font-size: 22px;
+}
+
+.system-message {
+    color: var(--secondary);
+    border-left: none;
+    align-self: center;
+    font-size: 16px;
+}
+
+.message.me {
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.other {
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.typing-indicator {
+    background-color: var(--panel);
+    color: var(--text);
+    padding: 5px 10px;
+    font-size: 0.85em;
+    border-radius: 10px;
+    position: absolute; /* KEY: Take it out of normal flow */
+    bottom: 15%;          /* KEY: Pin to the bottom of the parent */
+    left: 50%;          /* KEY: Start from the middle */
+    transform: translateX(-50%); /* KEY: Center it horizontally */
+    white-space: nowrap; /* Prevent text from wrapping */
+    z-index: 10;        /* KEY: Ensure it's on top of chat messages */
+    font-size: 16px;
+
+    opacity: 0; /* use opacity for a fade effect */
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.typing-indicator.active {
+    opacity: 1;
+}
+
+.input-container {
+    display: flex;
+    border: 1px solid var(--primary);
+    border-radius: 30px;
+    background: var(--background);
+    padding: 5px;
+}
+
+#message-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    color: var(--text);
+    font-size: 16px;
+}
+
+#message-input:focus {
+    outline: none;
+}
+
+.cursor {
+    display: none;
+    width: 10px;
+    height: 16px;
+    background: var(--primary);
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+.send-message-btn {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    color: var(--background);
+    padding: 10px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.send-message-btn:hover {
+    background: var(--secondary);
+    color: var(--background);
+}
+
+.status-bar {
+    background: var(--background);
+    /* border: 2px solid var(--primary); */
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 14px;
 }
