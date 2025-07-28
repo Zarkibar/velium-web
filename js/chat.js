@@ -66,7 +66,7 @@ socket.on('get_all_username', (usernames) => {
 
 socket.on('message', ({username, message}) => {
     console.log(`${username}: ${message}`);
-    if (username == veliumStorage.getUsername())
+    if (username === veliumStorage.getUsername())
         addMessage(username, message, true);
     else
         addMessage(username, message, false);
