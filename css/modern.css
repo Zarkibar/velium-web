@@ -174,9 +174,44 @@ body {
     margin: 5px 0;
     padding: 8px;
     animation: fadeIn 0.3s;
+    background: none;
+    border-radius: 20px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message.me {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message.other {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.username {
+    margin: 0 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.message-content {
+    margin: 5px 0;
+    padding: 8px;
     background-color: #152f42;
     border-radius: 20px;
     font-size: 22px;
+}
+
+.message-content.me {
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message-content.other {
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
 }
 
 .system-message {
@@ -184,16 +219,6 @@ body {
     border-left: none;
     align-self: center;
     font-size: 16px;
-}
-
-.message.me {
-    align-self: flex-end;
-    border-bottom-right-radius: 5px;
-}
-
-.message.other {
-    align-self: flex-start;
-    border-bottom-left-radius: 5px;
 }
 
 .typing-indicator {

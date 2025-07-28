@@ -223,6 +223,20 @@ body {
     padding: 8px;
     border-left: 2px solid var(--primary);
     animation: fadeIn 0.3s;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.username {
+    border: 2px solid var(--panel);
+    background: transparent;
+    padding: 5px 5px;
+}
+
+.message-content {
+    align-self: center;
+    margin-left: 10px;
 }
 
 .input-container {
