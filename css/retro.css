@@ -286,6 +286,7 @@ body {
 .system-message {
     color: var(--secondary);
     font-style: italic;
+    align-self: center;
 }
 
 .user-tag {
