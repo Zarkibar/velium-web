@@ -9,23 +9,25 @@
     <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <h1>Velium v0.0.2</h1>
+        </div>
+        <div class="nav-tabs">
+            <a href="../chat/chat.html" class="nav-btn">CHAT</a>
+            <a href="posts.html" class="nav-btn active">POSTS</a>
+        </div>
+    </div>
+
+    <div class="post-form active">
+        <textarea id="post-content" class="post-input"
+                    placeholder="What's happening recently?"></textarea>
+        <button id="post-btn" class="post-btn">POST</button>
+        <div class="error-message" id="post-error">Hello</div>
+    </div>
+    
     <div class="post-container">
-        <div class="header">
-            <div class="logo">
-                <h1>Velium v0.0.2</h1>
-            </div>
-            <div class="nav-tabs">
-                <a href="../chat/chat.html" class="nav-btn">CHAT</a>
-                <a href="posts.html" class="nav-btn active">POSTS</a>
-            </div>
-        </div>
-        
-        <div class="post-form">
-            <textarea id="post-content" class="post-input"
-                      placeholder="What's happening recently?"></textarea>
-            <button id="post-btn" class="post-btn">POST</button>
-            <div class="error-message" id="post-error"></div>
-        </div>
+        <button class="post-form-btn">Post something</button>
         
         <div class="post-feed" id="post-feed">
             <div class="post" id="post-id0">

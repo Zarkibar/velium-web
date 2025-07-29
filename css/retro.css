@@ -50,14 +50,6 @@ body {
     pointer-events: none;
 }
 
-.post-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border: 2px solid var(--primary);
-    background: var(--panel);
-}
-
 .convo-btn {
     background: transparent;
     border: 1px solid var(--primary);
@@ -295,11 +287,46 @@ body {
 }
 
 /* Post Page Styles */
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 2px solid var(--primary);
+    background: var(--panel);
+}
+
+.post-form-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 8px 15px;
+    cursor: pointer;
+    width: 150px;
+    align-self: center;
+}
+
+.post-form-btn:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
 .post-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.9);
+    display: none;
     border: 2px solid var(--primary);
     padding: 15px;
     margin-bottom: 15px;
     background: var(--background);
+}
+
+.post-form.active {
+    display: inline;
 }
 
 .post-input {

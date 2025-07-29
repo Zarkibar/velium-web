@@ -104,6 +104,7 @@ postBtn.addEventListener("click", () => {
     const now = new Date();
     const formattedTime = now.toLocaleString("en-US");
 
+    loadPost(0, username, content, formattedTime);
     socket.emit("post", {username, content: content, time: formattedTime});
 });
 
