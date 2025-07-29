@@ -33,17 +33,20 @@ function addMessage(username, message, self=false){
         return;
     }
 
-    if (lastSentMessage.children[0].textContent === veliumStorage.getUsername()){
-        let sender = 'other';
-        if (self) sender = 'me';
-
-        const newMessage = document.createElement('div');
-        newMessage.classList.add('message-content');
-        newMessage.classList.add(sender);
-        newMessage.textContent = message;
-
-        lastSentMessage.append(newMessage);
+    if (lastSentMessage.children[0].textContent !== veliumStorage.getUsername()){
+        lastSentMessage = addNewMessage(username, message, self);
+        return;
     }
+
+    let sender = 'other';
+    if (self) sender = 'me';
+
+    const newMessage = document.createElement('div');
+    newMessage.classList.add('message-content');
+    newMessage.classList.add(sender);
+    newMessage.textContent = message;
+
+    lastSentMessage.append(newMessage);
 }
 
 function addSystemMessage(message){
