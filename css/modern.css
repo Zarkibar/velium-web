@@ -317,3 +317,206 @@ body {
     font-size: 14px;
 }
 
+/* Post Page Styles */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* border: 2px solid var(--primary);
+    background: var(--panel);
+    border-radius: 10px; */
+}
+
+
+.post-form-btn {
+    background-color: var(--panel);
+    border: none;
+    color: var(--primary);
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 150px;
+    align-self: center;
+    border-radius: 25px;
+}
+
+.post-form-btn:hover {
+    background: var(--text);
+    color: var(--panel);
+}
+
+.post-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.5);
+    display: none;
+    flex-direction: row;
+    align-content: space-between;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--background);
+    width: 70%;
+    max-width: 80%;
+    max-height: 60%;
+}
+
+.post-form.active {
+    display: flex;
+}
+
+.post-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    padding: 10px;
+    margin-bottom: 10px;
+    min-height: 70px;
+    font-size: 14px;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.post-input:focus {
+    outline: none;
+}
+
+.post-btn {
+    background-color: var(--background);
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+    color: var(--text);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+    align-self: center;
+}
+
+.post-btn:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.post-feed {
+    flex-grow: 1;
+    border: 1px solid var(--primary);
+    background: var(--background);
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.post {
+    border: 1px solid var(--primary);
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--panel);
+    position: relative;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--primary);
+    padding-bottom: 5px;
+}
+
+.post-username {
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+.post-time {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.post-content {
+    line-height: 1.5;
+    white-space: pre-wrap; /* This preserves spaces and newlines */
+}
+
+.post-options-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    padding: 0 8px;
+    transition: all 0.2s;
+}
+
+.post-options-btn:hover {
+    color: var(--primary-darker);
+    transform: scale(1.1);
+}
+
+.post-options-menu {
+    position: absolute;
+    right: 0;
+    background: var(--background);
+    border: 1px solid var(--primary);
+    /* border-radius: 8px; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    width: 120px;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-options-menu.show {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+
+.post-option {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text);
+    /* font-weight: bold; */
+}
+
+.post-option:hover {
+    background: var(--primary);
+    color: var(--panel);
+}
+
+.post-option.danger {
+    color: var(--error);
+}
+
+.post-option.danger:hover {
+    background: var(--error);
+    color: var(--panel);
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: var(--error);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.error-message {
+    color: var(--error);
+    margin: 10px 0;
+    text-align: center;
+    display: none;
+}

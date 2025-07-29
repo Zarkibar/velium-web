@@ -127,6 +127,12 @@ function escapeHTML(str) {
         .replace(/'/g, "&#039;");
 }
 
+const autoResize = () => {
+      document.getElementById('post-content').style.height = 'auto'; // Reset height
+      document.getElementById('post-form').style.height = (document.getElementById('post-content').scrollHeight + 30) + 'px';
+};
+document.getElementById('post-content').addEventListener('input', autoResize);
+
 // Toggle options menu when clicking the options button
 document.addEventListener('click', function(event) {
     // Close all other open menus first
