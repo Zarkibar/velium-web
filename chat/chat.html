@@ -11,7 +11,7 @@
 <body>
     <div class="header">
         <button class="convo-btn" onclick="toggle_convo(this)">☰</button>
-        <h1>Velium v0.0.1</h1>
+        <h1>Velium v0.3.1</h1>
         <!-- <p>An end-to-end encrypted chat applicaton</p> -->
         <p>The chats aren't encrypted yet.</p>
         
@@ -36,12 +36,15 @@
                 
                 <div class="message me">
                     <div class="username">You</div>
-                    <div class="message-content me">Hello?</div>
+                    <div class="message-content me start">Hello?</div>
+                    <div class="message-content me mid">Anyone there?</div>
                 </div>
 
                 <div class="message other">
                     <div class="username">Alex</div>
-                    <div class="message-content other">Hey! How are you doing?</div>
+                    <div class="message-content other start">Hey! How are you doing?</div>
+                    <div class="message-content other mid">I believe the text decoration is a bit weird now</div>
+                    <div class="message-content other mid">Can you fix it?</div>
                 </div>
             </div>
 
@@ -61,9 +64,9 @@
     </div>
     
     <div class="status-bar">
-        <div>STATUS: ONLINE</div>
+        <!-- <div>STATUS: ONLINE</div>
         <div>USERS: <span id="user-count"></span></div>
-        <div>DATE: <span id="current-date"></span></div>
+        <div>DATE: <span id="current-date"></span></div> -->
     </div>
 
     <script src="../js/storage.js"></script>

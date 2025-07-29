@@ -1,9 +1,11 @@
 const socket = SocketManager.connect();
 
-const username = veliumStorage.getUsername()
+const username = veliumStorage.getUsername();
+
+let lastSentMessage = null;
 
 // Function to add a new message to the chat
-function addMessage(username, message, self=false) {
+function addNewMessage(username, message, self=false) {
     const chatDisplay = document.getElementById('chat-display');
     const messageElement = document.createElement('div');
     let sender = 'other';
@@ -21,6 +23,27 @@ function addMessage(username, message, self=false) {
     
     // Scroll to the bottom
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
+
+    return messageElement;
+}
+
+function addMessage(username, message, self=false){
+    if (!lastSentMessage) {
+        lastSentMessage = addNewMessage(username, message, self);
+        return;
+    }
+
+    if (lastSentMessage.children[0].textContent === veliumStorage.getUsername()){
+        let sender = 'other';
+        if (self) sender = 'me';
+
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message-content');
+        newMessage.classList.add(sender);
+        newMessage.textContent = message;
+
+        lastSentMessage.append(newMessage);
+    }
 }
 
 function addSystemMessage(message){
@@ -64,12 +87,9 @@ socket.on('get_all_username', (usernames) => {
     });
 });
 
-socket.on('message', ({username, message}) => {
-    console.log(`${username}: ${message}`);
-    if (username === veliumStorage.getUsername())
-        addMessage(username, message, true);
-    else
-        addMessage(username, message, false);
+socket.on('message', (data) => {
+    console.log(`${data.username}: ${data.message}`);
+    addMessage(data.username, data.message);
 });
 
 socket.on('loadChats', chats => {
@@ -115,6 +135,7 @@ function handleSubmit(){
     
     if (message) {
         socket.emit('message', {username, message});
+        addMessage(username, message, true);
         input.value = '';
     }
 }
@@ -184,3 +205,11 @@ function toggle_convo(btn){
 setTimeout(() => {
     addSystemMessage("Connection established. Ready to chat!");
 }, 500);
+
+// setTimeout(() => {
+//     addMessage(username, "Helloo", true);
+// }, 1000);
+
+// setTimeout(() => {
+//     addMessage(username, "Hey there! how are you doing?");
+// }, 3000);

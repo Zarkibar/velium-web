@@ -176,7 +176,6 @@ body {
     animation: fadeIn 0.3s;
     background: none;
     border-radius: 20px;
-    font-size: 22px;
     display: flex;
     flex-direction: column;
 }
@@ -198,21 +197,33 @@ body {
 }
 
 .message-content {
-    margin: 5px 0;
-    padding: 8px;
+    margin: 1px 0;
+    padding: 10px;
     background-color: var(--panel);
     border-radius: 20px;
-    font-size: 22px;
+    font-size: 18px;
 }
 
-.message-content.me {
+.message-content.me.start {
     align-self: flex-end;
     border-bottom-right-radius: 5px;
 }
 
-.message-content.other {
+.message-content.other.start {
     align-self: flex-start;
     border-bottom-left-radius: 5px;
+}
+
+.message-content.me.mid {
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.message-content.other.mid {
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .system-message {
