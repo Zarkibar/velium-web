@@ -157,3 +157,7 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+
+loadPost(3, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elit turpis, consectetur vel ipsum ac, rutrum porttitor nulla. Duis laoreet, metus non placerat congue, tellus leo finibus purus, a gravida turpis ipsum in mauris. Integer non posuere nibh. Vestibulum et mattis dolor. Vivamus pretium felis ac rutrum pulvinar. Pellentesque faucibus tincidunt ex, a feugiat eros placerat at. Duis feugiat ipsum et est vestibulum, eget blandit tellus ornare. Nulla eget arcu venenatis, rhoncus tellus a, tincidunt nulla.', '29/7/2025 11:41 PM');
+loadPost(3, 'Jack The Ripper', 'Morbi vestibulum libero quis imperdiet aliquet. Donec pulvinar tellus in massa egestas tempor. Mauris a nibh ac ipsum rhoncus lacinia sit amet id elit. Aenean venenatis dolor sed dui volutpat, eget luctus sem aliquam. Fusce sit amet ipsum tincidunt, venenatis arcu at, ullamcorper mi. Curabitur eu augue ut dolor efficitur auctor vel a metus. Vivamus a blandit magna. Nam accumsan egestas ultricies. Vivamus pellentesque ex a nibh aliquet, sed dictum ipsum posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.', '29/7/2025 11:41 PM');
+loadPost(3, 'Epstein', 'why do children scream so much?', '29/7/2025 11:41 PM');

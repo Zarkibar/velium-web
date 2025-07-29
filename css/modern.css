@@ -406,17 +406,17 @@ body {
 
 .post-feed {
     flex-grow: 1;
-    border: 1px solid var(--primary);
+    border-radius: 10px;
     background: var(--background);
-    padding: 10px;
+    padding: 20px;
     overflow-y: auto;
 }
 
 .post {
-    border: 1px solid var(--primary);
+    background: var(--panel);
+    border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
-    background: var(--panel);
     position: relative;
 }
 
@@ -424,13 +424,17 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    border-bottom: 1px dashed var(--primary);
     padding-bottom: 5px;
 }
 
 .post-username {
-    font-weight: bold;
+    background-color: var(--background);
     color: var(--secondary);
+    border-radius: 5px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: center;
 }
 
 .post-time {
