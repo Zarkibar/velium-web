@@ -453,6 +453,7 @@ body {
     padding: 15px;
     margin-bottom: 15px;
     position: relative;
+    animation: fadeIn 0.5s;
 }
 
 .post-header {

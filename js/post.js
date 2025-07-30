@@ -4,8 +4,25 @@ const postBtn = document.getElementById("post-btn");
 const postContent = document.getElementById("post-content");
 const postFeed = document.getElementById("post-feed");
 const postError = document.getElementById("post-error");
+const postWindow = document.getElementById('post-form');
 
 const username = veliumStorage.getUsername();
+
+function togglePostWindow(){
+    if (postWindow.classList.contains('active')){
+        postWindow.classList.remove('active');
+    } else {
+        postWindow.classList.add('active');
+    }
+}
+
+function togglePostWindowState(state){
+    if (!state){
+        postWindow.classList.remove('active');
+    } else {
+        postWindow.classList.add('active');
+    }
+}
 
 function requestDeletePost(id){
     socket.emit("deletePost", id);
@@ -105,6 +122,7 @@ postBtn.addEventListener("click", () => {
     const formattedTime = now.toLocaleString("en-US");
 
     loadPost(0, username, content, formattedTime);
+    togglePostWindowState(false);
     socket.emit("post", {username, content: content, time: formattedTime});
 });
 
@@ -158,6 +176,31 @@ document.addEventListener('click', function(event) {
     }
 });
 
-loadPost(3, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elit turpis, consectetur vel ipsum ac, rutrum porttitor nulla. Duis laoreet, metus non placerat congue, tellus leo finibus purus, a gravida turpis ipsum in mauris. Integer non posuere nibh. Vestibulum et mattis dolor. Vivamus pretium felis ac rutrum pulvinar. Pellentesque faucibus tincidunt ex, a feugiat eros placerat at. Duis feugiat ipsum et est vestibulum, eget blandit tellus ornare. Nulla eget arcu venenatis, rhoncus tellus a, tincidunt nulla.', '29/7/2025 11:41 PM');
-loadPost(3, 'Jack The Ripper', 'Morbi vestibulum libero quis imperdiet aliquet. Donec pulvinar tellus in massa egestas tempor. Mauris a nibh ac ipsum rhoncus lacinia sit amet id elit. Aenean venenatis dolor sed dui volutpat, eget luctus sem aliquam. Fusce sit amet ipsum tincidunt, venenatis arcu at, ullamcorper mi. Curabitur eu augue ut dolor efficitur auctor vel a metus. Vivamus a blandit magna. Nam accumsan egestas ultricies. Vivamus pellentesque ex a nibh aliquet, sed dictum ipsum posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.', '29/7/2025 11:41 PM');
-loadPost(3, 'Epstein', 'why do children scream so much?', '29/7/2025 11:41 PM');
+const dropdown = document.querySelector('.dropdown');
+const btn = dropdown.querySelector('.dropdown-btn');
+const options = dropdown.querySelectorAll('.dropdown-options div');
+const themeLink = document.getElementById('theme-link');
+
+btn.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+});
+
+options.forEach(option => {
+    option.addEventListener('click', () => {
+        themeLink.href = option.dataset.value;
+        btn.textContent = option.textContent + ' ▾';
+        dropdown.classList.remove('active');
+    });
+});
+
+setTimeout(() => {
+    loadPost(3, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elit turpis, consectetur vel ipsum ac, rutrum porttitor nulla. Duis laoreet, metus non placerat congue, tellus leo finibus purus, a gravida turpis ipsum in mauris. Integer non posuere nibh. Vestibulum et mattis dolor. Vivamus pretium felis ac rutrum pulvinar. Pellentesque faucibus tincidunt ex, a feugiat eros placerat at. Duis feugiat ipsum et est vestibulum, eget blandit tellus ornare. Nulla eget arcu venenatis, rhoncus tellus a, tincidunt nulla.', '29/7/2025 11:41 PM');
+}, 1000);
+
+setTimeout(() => {
+    loadPost(3, 'Vorpidi', 'I like burgirs. And I want to eat more of it.', '1/8/2025 8:32 PM');
+}, 5000);
+
+setTimeout(() => {
+    loadPost(3, 'Epstein', 'why do children scream so much?', '29/7/2025 11:41 AM');
+}, 10000);

@@ -10,16 +10,24 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo">
-            <h1>Velium</h1>
+        <h1>Velium</h1>
+
+        <div class="dropdown">
+            <button class="dropdown-btn">Modern ▾</button>
+            <div class="dropdown-options">
+                <div data-value="../css/modern.css">Modern</div>
+                <div data-value="../css/retro.css">Retro</div>
+            </div>
         </div>
+        <p>Post whatever you want.</p>
+
         <div class="nav-tabs">
             <a href="../chat/chat.html" class="nav-btn">CHAT</a>
             <a href="posts.html" class="nav-btn active">POSTS</a>
         </div>
     </div>
 
-    <div class="post-form active" id="post-form">
+    <div class="post-form" id="post-form">
         <textarea id="post-content" class="post-input"
                     placeholder="What's happening recently?"></textarea>
         <button id="post-btn" class="post-btn">POST</button>
@@ -27,7 +35,7 @@
     </div>
     
     <div class="post-container">
-        <button class="post-form-btn">Post something</button>
+        <button class="post-form-btn" onclick="togglePostWindow()">Post something</button>
         
         <div class="post-feed" id="post-feed">
             <div class="post" id="post-id0">
