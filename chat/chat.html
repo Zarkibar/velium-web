@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velium - Chat</title>
-    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" id="theme-link" href="../css/modern.css">
     <link rel="icon" type="image/png" href="../img/icon.png">
     <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
 </head>
 <body>
     <div class="header">
         <button class="convo-btn" onclick="toggle_convo(this)">☰</button>
-        <h1>Velium v0.3.1</h1>
-        <!-- <p>An end-to-end encrypted chat applicaton</p> -->
+        <h1>Velium</h1>
+
+        <div class="dropdown">
+            <button class="dropdown-btn">Modern ▾</button>
+            <div class="dropdown-options">
+                <div data-value="../css/modern.css">Modern</div>
+                <div data-value="../css/retro.css">Retro</div>
+            </div>
+        </div>
         <p>The chats aren't encrypted yet.</p>
         
         <div class="nav-tabs">
@@ -64,9 +71,8 @@
     </div>
     
     <div class="status-bar">
-        <!-- <div>STATUS: ONLINE</div>
+        <!-- <div>STATUS: ONLINE</div> -->
         <div>USERS: <span id="user-count"></span></div>
-        <div>DATE: <span id="current-date"></span></div> -->
     </div>
 
     <script src="../js/storage.js"></script>

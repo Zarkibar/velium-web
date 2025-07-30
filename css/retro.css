@@ -83,6 +83,58 @@ body {
 .header h1 {
     font-size: 1.8rem;
     text-shadow: 0 0 5px var(--primary);
+    padding: 5px 5px;
+    margin: 1px 10px;
+}
+
+.header p {
+    flex: 1;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 6px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+.dropdown-btn:hover {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: var(--background);
+    padding: 6px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+.dropdown-options {
+    display: none;
+    position: absolute;
+    background: var(--background);
+    top: 100%;
+    left: 0;
+    width: 120px;
+    overflow: hidden;
+    border: 1px solid var(--primary);
+    margin-top: 5px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+.dropdown-options div {
+    padding: 8px;
+    color: var(--text);
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary);
+}
+.dropdown-options div:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+.dropdown.active .dropdown-options {
+    display: block;
 }
 
 .nav-tabs {

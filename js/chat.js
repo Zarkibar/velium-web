@@ -181,11 +181,6 @@ document.getElementById("send-message-btn").onclick = () => {
     handleSubmit();
 }
 
-// Set current date in status bar
-const now = new Date();
-const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
-document.getElementById('current-date').textContent = formattedDate;
-
 function toggle_convo(btn){
     if (btn.classList.contains('active')){
         btn.classList.remove('active');
@@ -195,6 +190,23 @@ function toggle_convo(btn){
         document.getElementById('convo-list').classList.add('active');
     }
 }
+
+const dropdown = document.querySelector('.dropdown');
+const btn = dropdown.querySelector('.dropdown-btn');
+const options = dropdown.querySelectorAll('.dropdown-options div');
+const themeLink = document.getElementById('theme-link');
+
+btn.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+});
+
+options.forEach(option => {
+    option.addEventListener('click', () => {
+        themeLink.href = option.dataset.value;
+        btn.textContent = option.textContent + ' ▾';
+        dropdown.classList.remove('active');
+    });
+});
 
 // Close menu when clicking outside
 // document.addEventListener('click', function(event) {
