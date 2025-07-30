@@ -1,4 +1,12 @@
 window.veliumStorage = {
+  setTheme(theme){
+    localStorage.setItem('veliumTheme', theme);
+  },
+
+  getTheme(){
+    return localStorage.getItem('veliumTheme');
+  },
+
   getUsername() {
     return localStorage.getItem('veliumUsername')
   },
