@@ -95,6 +95,10 @@ socket.on('message', (data) => {
     addMessage(data.username, data.message);
 });
 
+// socket.on('message_sent', (data) => {
+//     addMessage(data.username, data.message);
+// });
+
 socket.on('loadChats', chats => {
     chats.forEach((chat) => {
         // addMessage(chat.message, false);
