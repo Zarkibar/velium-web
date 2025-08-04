@@ -96,7 +96,7 @@ socket.on('message', (data) => {
 });
 
 // socket.on('message_sent', (data) => {
-//     addMessage(data.username, data.message);
+//     addMessage(data.username, data.message, true);
 // });
 
 socket.on('loadChats', chats => {
