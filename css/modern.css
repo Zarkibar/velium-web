@@ -93,6 +93,16 @@ body {
     display: block;
 }
 
+.description {
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .description {
+    visibility: hidden;
+  }
+}
+
 .convo-btn {
     background: transparent;
     border: 1px solid var(--primary);

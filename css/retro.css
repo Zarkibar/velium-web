@@ -137,6 +137,17 @@ body {
     display: block;
 }
 
+
+.description {
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .description {
+    visibility: hidden;
+  }
+}
+
 .nav-tabs {
     display: flex;
     gap: 10px;
