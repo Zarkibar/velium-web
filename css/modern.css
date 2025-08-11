@@ -3,6 +3,7 @@
     --secondary: #b6b6b6;
     --background: #161616;
     --panel: #2e2e2e;
+    --panel-darker: #222222;
     --text: #d2d2e2;
     --error: tomato;
 }
@@ -208,57 +209,27 @@ body {
 .message {
     margin: 5px 0;
     padding: 8px;
-    background: none;
-    border-radius: 20px;
+    background: var(--panel);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-}
-
-.message.me {
-    align-self: flex-end;
-    align-items: flex-end;
-}
-
-.message.other {
-    align-self: flex-start;
-    align-items: flex-start;
-}
-
-.username {
-    margin: 0 10px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-}
-
-.message-content {
-    margin: 1px 0;
-    padding: 10px;
-    background-color: var(--panel);
-    border-radius: 20px;
-    font-size: 18px;
     animation: fadeIn 0.3s;
 }
 
-.message-content.me.start {
-    align-self: flex-end;
-    border-bottom-right-radius: 5px;
-}
-
-.message-content.other.start {
+.username {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 25px;
+    background: var(--panel-darker);
     align-self: flex-start;
-    border-bottom-left-radius: 5px;
 }
 
-.message-content.me.mid {
-    align-self: flex-end;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.message-content.other.mid {
-    align-self: flex-start;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+.message-content {
+    background: none;
+    padding: 3px 10px;
+    font-size: 16px;
 }
 
 .system-message {
@@ -266,6 +237,7 @@ body {
     border-left: none;
     align-self: center;
     font-size: 16px;
+    border-radius: 25px;
 }
 
 .typing-indicator {
@@ -273,7 +245,7 @@ body {
     color: var(--text);
     padding: 5px 10px;
     font-size: 0.85em;
-    border-radius: 10px;
+    border-radius: 25px;
     position: absolute; /* KEY: Take it out of normal flow */
     bottom: 15%;          /* KEY: Pin to the bottom of the parent */
     left: 50%;          /* KEY: Start from the middle */

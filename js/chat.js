@@ -54,7 +54,6 @@ function addSystemMessage(message){
     const messageElement = document.createElement('div');
     
     messageElement.classList.add('message');
-    messageElement.classList.add('message-content');
     messageElement.classList.add('system-message');
     
     messageElement.textContent = message;
