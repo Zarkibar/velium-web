@@ -5,7 +5,7 @@ const username = veliumStorage.getUsername();
 let lastSentMessage = null;
 
 // Function to add a new message to the chat
-function addNewMessage(username, message, self=false) {
+function addNewMessage(username, message) {
     const chatDisplay = document.getElementById('chat-display');
     const messageElement = document.createElement('div');
     let sender = 'other';
@@ -27,23 +27,19 @@ function addNewMessage(username, message, self=false) {
     return messageElement;
 }
 
-function addMessage(username, message, self=false){
+function addMessage(username, message){
     if (!lastSentMessage) {
-        lastSentMessage = addNewMessage(username, message, self);
+        lastSentMessage = addNewMessage(username, message);
         return;
     }
 
-    if (lastSentMessage.children[0].textContent !== veliumStorage.getUsername()){
-        lastSentMessage = addNewMessage(username, message, self);
+    if (lastSentMessage.children[0].textContent !== username){
+        lastSentMessage = addNewMessage(username, message);
         return;
     }
-
-    let sender = 'other';
-    if (self) sender = 'me';
 
     const newMessage = document.createElement('div');
     newMessage.classList.add('message-content');
-    newMessage.classList.add(sender);
     newMessage.textContent = message;
 
     lastSentMessage.append(newMessage);
@@ -94,10 +90,6 @@ socket.on('message', (data) => {
     addMessage(data.username, data.message);
 });
 
-// socket.on('message_sent', (data) => {
-//     addMessage(data.username, data.message, true);
-// });
-
 socket.on('loadChats', chats => {
     chats.forEach((chat) => {
         // addMessage(chat.message, false);
@@ -141,7 +133,6 @@ function handleSubmit(){
     
     if (message) {
         socket.emit('message', {username, message});
-        addMessage(username, message, true);
         input.value = '';
     }
 }
