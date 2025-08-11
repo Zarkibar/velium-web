@@ -119,6 +119,7 @@ body {
     left: 0;
     width: 120px;
     overflow: hidden;
+    z-index: 100;
     border: 1px solid var(--primary);
     margin-top: 5px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5);
@@ -276,7 +277,7 @@ body {
     margin: 5px 0;
     padding: 8px;
     border-left: 2px solid var(--primary);
-    animation: fadeIn 0.3s;
+    /* animation: fadeIn 0.3s; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
