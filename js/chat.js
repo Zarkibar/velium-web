@@ -65,16 +65,12 @@ socket.on("user_joined_in_chat", username => {
     addSystemMessage(`${username} has joined the chat`);
 });
 
-socket.on("user_left_in_chat", username => {
-    addSystemMessage(`${username} has left the chat`);
-});
-
 socket.on("user_joined_in_posts", username => {
     addSystemMessage(`${username} is visiting posts`);
 });
 
-socket.on("user_left_in_posts", username => {
-    addSystemMessage(`${username} has left posts`);
+socket.on("user_left", username => {
+    addSystemMessage(`${username} left`);
 });
 
 socket.on('get_all_username', (usernames) => {
